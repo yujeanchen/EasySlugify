@@ -9,7 +9,7 @@ namespace EasySlugify
         public static string Slug(this string text, string separator = "-")
         {
             text = Regex.Replace(text, @"['\""]", ""); // Take out single and double quotes
-            text = Regex.Replace(text, @"[^\p{L}\p{N}]", " "); // Replace non-letters and non-numeric characters with white spaces
+            text = Regex.Replace(text, @"[^\p{L}\p{Mn}\p{Mc}\p{Nd}]", " "); // Replace non-word characters with white spaces
             text = Regex.Replace(text.Trim(), @"\s+", separator); // Replace consecutive white spaces by just one separator
             return text;
         }
